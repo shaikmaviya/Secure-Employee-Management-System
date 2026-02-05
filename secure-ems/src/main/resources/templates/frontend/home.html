@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Secure EMS</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="/home" class="nav-brand">🔐 Secure EMS</a>
+            <ul class="nav-links">
+                <li><a href="/home">Dashboard</a></li>
+                <li><a href="/employees">Employees</a></li>
+                <li><a href="/departments">Departments</a></li>
+                <li><a href="/attendance">Attendance</a></li>
+                <li><a href="/leave">Leave</a></li>
+                <li><a href="/payroll">Payroll</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/logout" class="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1>👋 Welcome to Secure EMS Dashboard</h1>
+            <p>Manage your employee information securely and efficiently. Access all your employee management tools and get real-time insights into your organization.</p>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="stats-section">
+            <h2>📊 Quick Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">125</div>
+                    <div class="stat-label">Total Employees</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Departments</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Attendance Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">On Leave Today</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="dashboard-grid">
+            <!-- Employee Management Card -->
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h2>Employees</h2>
+                <p>View, manage, and update employee information and comprehensive profiles with ease.</p>
+                <a href="/employees" class="card-link">Manage Employees →</a>
+            </div>
+
+            <!-- Departments Card -->
+            <div class="card">
+                <div class="card-icon">🏢</div>
+                <h2>Departments</h2>
+                <p>Organize employees by departments and manage team structures across your organization.</p>
+                <a href="/departments" class="card-link">View Departments →</a>
+            </div>
+
+            <!-- Attendance Card -->
+            <div class="card">
+                <div class="card-icon">✓</div>
+                <h2>Attendance</h2>
+                <p>Track employee attendance patterns and generate comprehensive attendance reports.</p>
+                <a href="/attendance" class="card-link">Track Attendance →</a>
+            </div>
+
+            <!-- Leave Management Card -->
+            <div class="card">
+                <div class="card-icon">📅</div>
+                <h2>Leave Management</h2>
+                <p>Manage employee leave requests, approvals, and maintain leave balance tracking.</p>
+                <a href="/leave" class="card-link">Manage Leaves →</a>
+            </div>
+
+            <!-- Payroll Card -->
+            <div class="card">
+                <div class="card-icon">💰</div>
+                <h2>Payroll</h2>
+                <p>Process salaries securely, manage deductions, and generate payroll reports confidentially.</p>
+                <a href="/payroll" class="card-link">View Payroll →</a>
+            </div>
+
+            <!-- Reports Card -->
+            <div class="card">
+                <div class="card-icon">📈</div>
+                <h2>Reports</h2>
+                <p>Generate detailed analytics and reports on employees, attendance, payroll, and more.</p>
+                <a href="/reports" class="card-link">View Reports →</a>
+            </div>
+        </div>
+
+        <!-- Recent Activity Section -->
+        <div class="activity-section">
+            <h2>🕐 Recent Activity</h2>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="activity-icon">✓</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Leave Request Approved</div>
+                        <div class="activity-time">Jane Smith's leave request for Jan 20-25 was approved</div>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-icon">💰</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Payroll Processed</div>
+                        <div class="activity-time">January 2026 payroll has been processed for all employees</div>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-icon">👥</div>
+                    <div class="activity-content">
+                        <div class="activity-title">New Employee Added</div>
+                        <div class="activity-time">Michael Chen has been added to the IT department</div>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-icon">📊</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Report Generated</div>
+                        <div class="activity-time">Q4 2025 attendance report is now available for download</div>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="activity-icon">🔔</div>
+                    <div class="activity-content">
+                        <div class="activity-title">System Update</div>
+                        <div class="activity-time">System maintenance completed successfully</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Secure EMS - Employee Management System. All rights reserved. | Powered by Spring Boot</p>
+    </footer>
+</body>
+</html>

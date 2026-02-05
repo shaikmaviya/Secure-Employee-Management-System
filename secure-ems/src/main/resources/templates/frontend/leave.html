@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Management - Secure EMS</title>
+    <link rel="stylesheet" href="/css/leave.css">
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/home" class="nav-brand">Secure EMS</a>
+            <ul class="nav-links">
+                <li><a href="/home">Dashboard</a></li>
+                <li><a href="/employees">Employees</a></li>
+                <li><a href="/departments">Departments</a></li>
+                <li><a href="/attendance">Attendance</a></li>
+                <li><a href="/leave">Leave</a></li>
+                <li><a href="/payroll">Payroll</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/logout" class="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>📅 Leave Management</h1>
+            <button class="request-btn">+ Request Leave</button>
+        </div>
+
+        <div class="leave-types">
+            <div class="leave-type">
+                <div class="leave-icon">🏖️</div>
+                <div class="leave-count">8</div>
+                <div class="leave-name">Annual Leave</div>
+            </div>
+            <div class="leave-type">
+                <div class="leave-icon">🤒</div>
+                <div class="leave-count">5</div>
+                <div class="leave-name">Sick Leave</div>
+            </div>
+            <div class="leave-type">
+                <div class="leave-icon">👶</div>
+                <div class="leave-count">3</div>
+                <div class="leave-name">Maternity Leave</div>
+            </div>
+            <div class="leave-type">
+                <div class="leave-icon">💍</div>
+                <div class="leave-count">2</div>
+                <div class="leave-name">Personal Leave</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active">All Requests</button>
+            <button class="tab">Pending</button>
+            <button class="tab">Approved</button>
+            <button class="tab">Rejected</button>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Leave Type</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Days</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Annual Leave</td>
+                        <td>2026-02-10</td>
+                        <td>2026-02-14</td>
+                        <td>5</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="approve-btn">Approve</button>
+                                <button class="reject-btn">Reject</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Sick Leave</td>
+                        <td>2026-01-15</td>
+                        <td>2026-01-17</td>
+                        <td>3</td>
+                        <td><span class="status-badge approved">Approved</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Michael Johnson</td>
+                        <td>Personal Leave</td>
+                        <td>2026-01-20</td>
+                        <td>2026-01-20</td>
+                        <td>1</td>
+                        <td><span class="status-badge approved">Approved</span></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Sarah Williams</td>
+                        <td>Annual Leave</td>
+                        <td>2026-03-01</td>
+                        <td>2026-03-07</td>
+                        <td>7</td>
+                        <td><span class="status-badge rejected">Rejected</span></td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

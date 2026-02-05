@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance - Secure EMS</title>
+    <link rel="stylesheet" href="/css/attendance.css">
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/home" class="nav-brand">Secure EMS</a>
+            <ul class="nav-links">
+                <li><a href="/home">Dashboard</a></li>
+                <li><a href="/employees">Employees</a></li>
+                <li><a href="/departments">Departments</a></li>
+                <li><a href="/attendance">Attendance</a></li>
+                <li><a href="/leave">Leave</a></li>
+                <li><a href="/payroll">Payroll</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/logout" class="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>✓ Attendance Tracking</h1>
+        </div>
+
+        <div class="filter-bar">
+            <input type="date" id="date" value="">
+            <select id="department">
+                <option value="">All Departments</option>
+                <option value="it">IT</option>
+                <option value="hr">HR</option>
+                <option value="finance">Finance</option>
+            </select>
+            <input type="text" placeholder="Search employee...">
+            <button>Filter</button>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">98</div>
+                <div class="stat-label">Present Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Absent Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">On Leave</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99.2%</div>
+                <div class="stat-label">Attendance Rate</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Employee ID</th>
+                        <th>Department</th>
+                        <th>Check-In Time</th>
+                        <th>Check-Out Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>EMP001</td>
+                        <td>IT</td>
+                        <td>09:00 AM</td>
+                        <td>05:30 PM</td>
+                        <td><span class="status-badge present">Present</span></td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>EMP002</td>
+                        <td>HR</td>
+                        <td>08:45 AM</td>
+                        <td>05:15 PM</td>
+                        <td><span class="status-badge present">Present</span></td>
+                    </tr>
+                    <tr>
+                        <td>Michael Johnson</td>
+                        <td>EMP003</td>
+                        <td>Finance</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><span class="status-badge absent">Absent</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sarah Williams</td>
+                        <td>EMP004</td>
+                        <td>IT</td>
+                        <td>09:15 AM</td>
+                        <td>05:45 PM</td>
+                        <td><span class="status-badge present">Present</span></td>
+                    </tr>
+                    <tr>
+                        <td>Robert Brown</td>
+                        <td>EMP005</td>
+                        <td>HR</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><span class="status-badge leave">On Leave</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('date').valueAsDate = new Date();
+    </script>
+</body>
+</html>

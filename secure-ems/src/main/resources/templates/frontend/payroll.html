@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll - Secure EMS</title>
+    <link rel="stylesheet" href="/css/payroll.css">
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/home" class="nav-brand">Secure EMS</a>
+            <ul class="nav-links">
+                <li><a href="/home">Dashboard</a></li>
+                <li><a href="/employees">Employees</a></li>
+                <li><a href="/departments">Departments</a></li>
+                <li><a href="/attendance">Attendance</a></li>
+                <li><a href="/leave">Leave</a></li>
+                <li><a href="/payroll">Payroll</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/logout" class="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>💰 Payroll Management</h1>
+            <div class="action-buttons">
+                <button class="btn btn-primary">+ Process Payroll</button>
+                <button class="btn btn-secondary">Export Report</button>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <select id="month">
+                <option value="">Select Month</option>
+                <option value="01">January 2026</option>
+                <option value="12">December 2025</option>
+                <option value="11">November 2025</option>
+            </select>
+            <select id="department">
+                <option value="">All Departments</option>
+                <option value="it">IT</option>
+                <option value="hr">HR</option>
+                <option value="finance">Finance</option>
+            </select>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Payroll</div>
+                <div class="stat-amount">$245,000</div>
+                <div class="stat-change">↑ 2.5% from last month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Deductions</div>
+                <div class="stat-amount">$35,200</div>
+                <div class="stat-change">↓ 1.2% from last month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Net Payroll</div>
+                <div class="stat-amount">$209,800</div>
+                <div class="stat-change">↑ 3.1% from last month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Average Salary</div>
+                <div class="stat-amount">$3,900</div>
+                <div class="stat-change">Stable</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Basic Salary</th>
+                        <th>Allowances</th>
+                        <th>Deductions</th>
+                        <th>Net Salary</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>EMP001</td>
+                        <td>John Doe</td>
+                        <td class="amount-text">$3,500</td>
+                        <td class="amount-text">$500</td>
+                        <td class="amount-text">$450</td>
+                        <td class="amount-text">$3,550</td>
+                        <td><span style="background-color: #c6f6d5; padding: 4px 8px; border-radius: 4px; color: #22543d;">Processed</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="view-btn">View</button>
+                                <button class="download-btn">PDF</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>EMP002</td>
+                        <td>Jane Smith</td>
+                        <td class="amount-text">$4,200</td>
+                        <td class="amount-text">$600</td>
+                        <td class="amount-text">$550</td>
+                        <td class="amount-text">$4,250</td>
+                        <td><span style="background-color: #c6f6d5; padding: 4px 8px; border-radius: 4px; color: #22543d;">Processed</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="view-btn">View</button>
+                                <button class="download-btn">PDF</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>EMP003</td>
+                        <td>Michael Johnson</td>
+                        <td class="amount-text">$3,800</td>
+                        <td class="amount-text">$400</td>
+                        <td class="amount-text">$500</td>
+                        <td class="amount-text">$3,700</td>
+                        <td><span style="background-color: #feebc8; padding: 4px 8px; border-radius: 4px; color: #7c2d12;">Pending</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="view-btn">View</button>
+                                <button class="download-btn">PDF</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>EMP004</td>
+                        <td>Sarah Williams</td>
+                        <td class="amount-text">$4,500</td>
+                        <td class="amount-text">$700</td>
+                        <td class="amount-text">$600</td>
+                        <td class="amount-text">$4,600</td>
+                        <td><span style="background-color: #c6f6d5; padding: 4px 8px; border-radius: 4px; color: #22543d;">Processed</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="view-btn">View</button>
+                                <button class="download-btn">PDF</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

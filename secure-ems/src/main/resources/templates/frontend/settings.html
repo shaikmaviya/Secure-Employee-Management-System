@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Secure EMS</title>
+    <link rel="stylesheet" href="/css/settings.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+        }
+        
+        .nav-brand {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .logout-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            color: #1a202c;
+        }
+
+        .settings-wrapper {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+
+        .settings-sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+            position: sticky;
+            top: 90px;
+        }
+
+        .settings-menu {
+            list-style: none;
+        }
+
+        .settings-menu li {
+            margin-bottom: 5px;
+        }
+
+        .settings-menu a {
+            display: block;
+            padding: 12px 16px;
+            color: #4a5568;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+
+        .settings-menu a:hover,
+        .settings-menu a.active {
+            background-color: #edf2f7;
+            color: #667eea;
+            border-left-color: #667eea;
+        }
+
+        .settings-content {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+
+        .settings-section {
+            margin-bottom: 40px;
+            display: none;
+        }
+
+        .settings-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #cbd5e0;
+            transition: 0.3s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #667eea;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: #2d3748;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .danger-zone {
+            background-color: #fff5f5;
+            border: 2px solid #feb2b2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .danger-zone h3 {
+            color: #c53030;
+            margin-bottom: 10px;
+        }
+
+        .danger-zone p {
+            color: #742a2a;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .btn-danger {
+            background-color: #f56565;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .settings-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-sidebar {
+                position: static;
+            }
+
+            .settings-menu a {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            .settings-content {
+                padding: 20px;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/home" class="nav-brand">Secure EMS</a>
+            <ul class="nav-links">
+                <li><a href="/home">Dashboard</a></li>
+                <li><a href="/employees">Employees</a></li>
+                <li><a href="/departments">Departments</a></li>
+                <li><a href="/attendance">Attendance</a></li>
+                <li><a href="/leave">Leave</a></li>
+                <li><a href="/payroll">Payroll</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/logout" class="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>⚙️ Settings</h1>
+        </div>
+
+        <div class="settings-wrapper">
+            <div class="settings-sidebar">
+                <ul class="settings-menu">
+                    <li><a href="#" data-section="profile" class="active">👤 Profile</a></li>
+                    <li><a href="#" data-section="security">🔒 Security</a></li>
+                    <li><a href="#" data-section="notifications">🔔 Notifications</a></li>
+                    <li><a href="#" data-section="preferences">⚙️ Preferences</a></li>
+                    <li><a href="#" data-section="system">🖥️ System</a></li>
+                </ul>
+            </div>
+
+            <div class="settings-content">
+                <!-- Profile Section -->
+                <div class="settings-section active" id="profile">
+                    <h2 class="section-title">Profile Settings</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" value="Administrator">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" value="admin@ems.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text" value="System Administrator">
+                        </div>
+                        <div class="form-group">
+                            <label>Department</label>
+                            <select>
+                                <option>IT</option>
+                                <option>HR</option>
+                                <option>Finance</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Save Changes</button>
+                            <button class="btn btn-secondary" type="button">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Security Section -->
+                <div class="settings-section" id="security">
+                    <h2 class="section-title">Security Settings</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Current Password</label>
+                            <input type="password" placeholder="Enter your current password">
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" placeholder="Confirm new password">
+                        </div>
+
+                        <h3 style="margin-top: 30px; margin-bottom: 15px; font-size: 16px; color: #1a202c;">Two-Factor Authentication</h3>
+                        <div class="toggle-switch">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            <span>Enable 2FA for enhanced security</span>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Update Security</button>
+                            <button class="btn btn-secondary" type="button">Cancel</button>
+                        </div>
+
+                        <div class="danger-zone">
+                            <h3>Active Sessions</h3>
+                            <p>Logout from all other devices/browsers</p>
+                            <button class="btn btn-danger">Logout from all devices</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Notifications Section -->
+                <div class="settings-section" id="notifications">
+                    <h2 class="section-title">Notification Preferences</h2>
+                    <form>
+                        <div class="toggle-switch">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span>Email Notifications</span>
+                        </div>
+                        <div class="toggle-switch">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span>Attendance Alerts</span>
+                        </div>
+                        <div class="toggle-switch">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span>Leave Request Updates</span>
+                        </div>
+                        <div class="toggle-switch">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            <span>Payroll Notifications</span>
+                        </div>
+                        <div class="toggle-switch">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span>System Updates</span>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Save Preferences</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Preferences Section -->
+                <div class="settings-section" id="preferences">
+                    <h2 class="section-title">System Preferences</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Theme</label>
+                            <select>
+                                <option>Light</option>
+                                <option>Dark</option>
+                                <option>Auto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Language</label>
+                            <select>
+                                <option>English</option>
+                                <option>Spanish</option>
+                                <option>French</option>
+                                <option>German</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Time Zone</label>
+                            <select>
+                                <option>UTC-5 (Eastern)</option>
+                                <option>UTC-6 (Central)</option>
+                                <option>UTC-7 (Mountain)</option>
+                                <option>UTC-8 (Pacific)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Date Format</label>
+                            <select>
+                                <option>MM/DD/YYYY</option>
+                                <option>DD/MM/YYYY</option>
+                                <option>YYYY-MM-DD</option>
+                            </select>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Save Preferences</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- System Section -->
+                <div class="settings-section" id="system">
+                    <h2 class="section-title">System Information</h2>
+                    <div class="form-group">
+                        <label>Application Version</label>
+                        <input type="text" value="1.0.0" disabled style="background-color: #f7fafc;">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Updated</label>
+                        <input type="text" value="January 19, 2026" disabled style="background-color: #f7fafc;">
+                    </div>
+                    <div class="form-group">
+                        <label>Database Version</label>
+                        <input type="text" value="MySQL 8.0.28" disabled style="background-color: #f7fafc;">
+                    </div>
+
+                    <div class="danger-zone">
+                        <h3>Maintenance</h3>
+                        <p>Clear cache and temporary files. This will not affect your data.</p>
+                        <button class="btn btn-danger">Clear Cache</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.settings-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.settings-menu a').forEach(l => l.classList.remove('active'));
+                // Remove active class from all sections
+                document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                // Add active class to target section
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Secure EMS</title>
+    <link rel="stylesheet" href="/css/auth-login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-wrapper">
+            <div class="login-box">
+                <div class="brand-section">
+                    <h1>Secure EMS</h1>
+                    <p>Employee Management System</p>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Login As</label>
+                        <select id="role" name="role" required>
+                            <option value="">-- Select Role --</option>
+                            <option value="admin">Admin</option>
+                            <option value="hr">HR Manager</option>
+                            <option value="manager">Manager</option>
+                            <option value="employee">Employee</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+
+                    <button type="submit" class="btn-login">Login</button>
+                </form>
+
+                <div class="divider">OR</div>
+
+                <div class="login-options">
+                    <button type="button" class="btn-google">
+                        <span>Login with Google</span>
+                    </button>
+                    <button type="button" class="btn-microsoft">
+                        <span>Login with Microsoft</span>
+                    </button>
+                </div>
+
+                <div class="login-footer">
+                    <p>Don't have an account? <a href="/auth-signup">Sign up here</a></p>
+                    <p><a href="/forgot-password">Forgot your password?</a></p>
+                </div>
+            </div>
+
+            <div class="login-side">
+                <div class="side-content">
+                    <h2>Welcome Back!</h2>
+                    <p>Manage your team efficiently with Secure EMS. Your data is safe and secure.</p>
+                    
+                    <div class="features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <p>Role-based access control</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <p>Real-time employee management</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <p>Secure data encryption</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <p>24/7 System monitoring</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+            
+            // Validate form
+            if (!email || !password || !role) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Simulate login and redirect based on role
+            console.log('Login attempt:', { email, role });
+            
+            // In production, this would be an actual API call
+            // For now, redirect based on role selection
+            const roleRoutes = {
+                'admin': '/admin/dashboard',
+                'hr': '/hr/dashboard',
+                'manager': '/manage/dashboard',
+                'employee': '/employee/dashboard'
+            };
+
+            // Simulate successful login
+            localStorage.setItem('userRole', role);
+            localStorage.setItem('userEmail', email);
+            
+            window.location.href = roleRoutes[role];
+        });
+        </script>
+</body>
+</html>

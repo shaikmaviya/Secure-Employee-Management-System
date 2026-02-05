@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard - Secure EMS</title>
+    <link rel="stylesheet" href="/css/employee-dashboard.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/employee/dashboard" class="nav-brand">Secure EMS - Employee</a>
+            <ul class="nav-links">
+                <li><a href="/employee/dashboard">My Dashboard</a></li>
+                <li><a href="/employee/leave">Leave Requests</a></li>
+                <li><a href="/employee/timesheet">My Timesheet</a></li>
+                <li><a href="/employee/salary">Salary Details</a></li>
+                <li><a href="/employee/profile">My Profile</a></li>
+                <li><a href="/logout" class="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Welcome, John Doe</h1>
+            <p>Your Personal Dashboard</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📅</div>
+                <div class="stat-info">
+                    <p class="stat-label">Leave Balance</p>
+                    <p class="stat-value">12 days</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏰</div>
+                <div class="stat-info">
+                    <p class="stat-label">This Month Hours</p>
+                    <p class="stat-value">160 hrs</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💼</div>
+                <div class="stat-info">
+                    <p class="stat-label">Department</p>
+                    <p class="stat-value">Engineering</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-info">
+                    <p class="stat-label">Performance Rating</p>
+                    <p class="stat-value">4.5/5</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="employee-actions">
+            <h2>Quick Actions</h2>
+            <div class="action-grid">
+                <a href="/employee/leave" class="action-card">
+                    <div class="action-icon">📝</div>
+                    <div class="action-text">
+                        <h3>Apply for Leave</h3>
+                        <p>Submit leave request</p>
+                    </div>
+                </a>
+                <a href="/employee/timesheet" class="action-card">
+                    <div class="action-icon">⏱️</div>
+                    <div class="action-text">
+                        <h3>My Timesheet</h3>
+                        <p>View and manage hours</p>
+                    </div>
+                </a>
+                <a href="/employee/salary" class="action-card">
+                    <div class="action-icon">💰</div>
+                    <div class="action-text">
+                        <h3>Salary Details</h3>
+                        <p>View payslips</p>
+                    </div>
+                </a>
+                <a href="/employee/profile" class="action-card">
+                    <div class="action-icon">👤</div>
+                    <div class="action-text">
+                        <h3>My Profile</h3>
+                        <p>Update personal info</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="recent-requests">
+            <h2>Recent Activity</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Details</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jan 15, 2026</td>
+                        <td>Leave Request</td>
+                        <td>Sick Leave</td>
+                        <td><span class="badge approved">Approved</span></td>
+                    </tr>
+                    <tr>
+                        <td>Jan 10, 2026</td>
+                        <td>Timesheet</td>
+                        <td>Week 2 Submitted</td>
+                        <td><span class="badge submitted">Submitted</span></td>
+                    </tr>
+                    <tr>
+                        <td>Dec 31, 2025</td>
+                        <td>Salary</td>
+                        <td>Monthly Payslip</td>
+                        <td><span class="badge processed">Processed</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+        }
+
+        .nav-brand {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .logout-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #718096;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .stat-icon {
+            font-size: 40px;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+        }
+
+        .employee-actions h2,
+        .recent-requests h2 {
+            font-size: 24px;
+            color: #1a202c;
+            margin-bottom: 20px;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .action-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 20px;
+            text-decoration: none;
+            color: #1a202c;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-icon {
+            font-size: 40px;
+            flex-shrink: 0;
+        }
+
+        .action-text h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .action-text p {
+            color: #718096;
+            font-size: 13px;
+        }
+
+        .recent-requests {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #f7fafc;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #2d3748;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background-color: #f7fafc;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.approved {
+            background-color: #c6f6d5;
+            color: #22543d;
+        }
+
+        .badge.submitted {
+            background-color: #bee3f8;
+            color: #2c5282;
+        }
+
+        .badge.processed {
+            background-color: #e6fffa;
+            color: #234e52;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .action-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</body>
+</html>
